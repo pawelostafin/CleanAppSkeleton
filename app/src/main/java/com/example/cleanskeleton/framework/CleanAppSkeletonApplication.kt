@@ -7,11 +7,11 @@ import dagger.android.support.DaggerApplication
 
 class CleanAppSkeletonApplication : DaggerApplication() {
 
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
+        DaggerAppComponent.factory().create(this)
+
     override fun onCreate() {
         super.onCreate()
     }
-
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
-        DaggerAppComponent.factory().create(this)
 
 }

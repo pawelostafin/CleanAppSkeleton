@@ -11,4 +11,6 @@ class NoteRepository @Inject constructor(private var localNoteDataSource: LocalN
 
     fun getAll(): Flowable<List<Note>> = localNoteDataSource.getAll()
 
+    fun deleteAll(): Single<Int> = localNoteDataSource.deleteAll()
+
 }

@@ -1,15 +1,14 @@
 package com.example.usecases
 
 import com.example.data.NoteRepository
-import com.example.domain.Note
-import com.example.usecases.AddNoteUseCase.Result.*
+import com.example.usecases.DeleteAllNotesUseCase.Result.*
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class AddNoteUseCase @Inject constructor(private val noteRepository: NoteRepository) {
+class DeleteAllNotesUseCase @Inject constructor(private val noteRepository: NoteRepository) {
 
-    fun execute(note: Note): Observable<Result> =
-        noteRepository.add(note)
+    fun execute(): Observable<Result> =
+        noteRepository.deleteAll()
             .toObservable()
             .map { Success as Result }
             .startWith(Loading)
@@ -22,4 +21,3 @@ class AddNoteUseCase @Inject constructor(private val noteRepository: NoteReposit
     }
 
 }
-

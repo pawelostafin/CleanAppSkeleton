@@ -24,4 +24,10 @@ class RoomNoteDataSource @Inject constructor(
         return noteEntityDAO.getAll().map { noteEntityToNoteMapper.map(it) }
     }
 
+    override fun deleteAll(): Single<Int> {
+        return Single.fromCallable {
+            noteEntityDAO.deleteAll()
+        }
+    }
+
 }

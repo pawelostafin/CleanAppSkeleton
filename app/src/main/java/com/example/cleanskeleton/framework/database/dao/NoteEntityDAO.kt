@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import com.example.cleanskeleton.framework.database.entities.NoteEntity
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 interface NoteEntityDAO {
@@ -14,5 +15,8 @@ interface NoteEntityDAO {
 
     @Query("SELECT * FROM note_entity")
     fun getAll(): Flowable<List<NoteEntity>>
+
+    @Query("DELETE FROM note_entity")
+    fun deleteAll(): Int
 
 }
