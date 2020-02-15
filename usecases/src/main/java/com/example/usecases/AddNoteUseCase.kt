@@ -4,8 +4,9 @@ import com.example.data.NoteRepository
 import com.example.domain.Note
 import com.example.usecases.AddNoteUseCase.Result.*
 import io.reactivex.Observable
+import javax.inject.Inject
 
-class AddNoteUseCase(private val noteRepository: NoteRepository) {
+class AddNoteUseCase @Inject constructor(private val noteRepository: NoteRepository) {
 
     private fun execute(note: Note): Observable<Result> =
         noteRepository.add(note)

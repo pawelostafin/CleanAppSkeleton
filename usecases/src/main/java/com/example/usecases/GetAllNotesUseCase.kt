@@ -4,8 +4,9 @@ import com.example.data.NoteRepository
 import com.example.domain.Note
 import com.example.usecases.GetAllNotesUseCase.Result.*
 import io.reactivex.Observable
+import javax.inject.Inject
 
-class GetAllNotesUseCase(private val noteRepository: NoteRepository) {
+class GetAllNotesUseCase @Inject constructor(private val noteRepository: NoteRepository) {
 
     fun execute(): Observable<Result> =
         noteRepository.getAll()
