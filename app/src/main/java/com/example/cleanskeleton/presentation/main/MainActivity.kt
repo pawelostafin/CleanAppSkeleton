@@ -1,7 +1,8 @@
-package com.example.cleanskeleton
+package com.example.cleanskeleton.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.cleanskeleton.R
 
 class MainActivity : AppCompatActivity() {
 
