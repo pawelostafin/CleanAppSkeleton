@@ -1,3 +1,10 @@
 package com.example.domain
 
-data class Note(val title: String, val message: String)
+import org.threeten.bp.LocalDateTime
+
+data class Note(
+    val dateTime: LocalDateTime,
+    val title: String,
+    val message: String,
+    val id: Long?
+)

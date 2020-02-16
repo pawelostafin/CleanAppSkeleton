@@ -1,54 +1,60 @@
 package com.example.cleanskeleton.presentation.main
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.lifecycle.ViewModelProvider
 import com.example.cleanskeleton.R
-import com.example.cleanskeleton.framework.CleanAppSkeletonViewModelFactory
-import dagger.android.support.DaggerAppCompatActivity
-import io.reactivex.disposables.CompositeDisposable
+import com.example.cleanskeleton.presentation.base.BaseMvvmActivity
+import com.example.cleanskeleton.presentation.main.navigation.Destination
+import com.example.cleanskeleton.presentation.second.SecondActivity
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity() {
+class MainActivity : BaseMvvmActivity<MainViewModel>() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    override val layoutResId: Int
+        get() = R.layout.activity_main
 
-    private val disposables = CompositeDisposable()
+    override val viewModelClass: Class<MainViewModel>
+        get() = MainViewModel::class.java
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun bindUI() {
+        super.bindUI()
 
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        addNoteButton.setOnClickListener { viewModel.addNoteButtonClicked() }
+        deleteButton.setOnClickListener { viewModel.deleteButtonClicked() }
+    }
 
-        addNoteButton.setOnClickListener {
-            viewModel.addNoteButtonClicked()
-        }
-
-        deleteButton.setOnClickListener {
-            viewModel.deleteButtonClicked()
-        }
+    override fun observeViewModel() {
+        super.observeViewModel()
 
         viewModel.noteItemsObs
             .subscribe(::fillLinearLayout)
             .addTo(disposables)
 
-        viewModel.onInitialized()
+        viewModel.navigationObs
+            .subscribe(::handleNavigation)
+            .addTo(disposables)
     }
 
     @SuppressLint("SetTextI18n")
     private fun fillLinearLayout(noteItems: List<NoteItem>) {
         linearLayout.removeAllViews()
-        noteItems.forEach {
+        noteItems.forEach { noteItem ->
             val itemView = AppCompatTextView(this).apply {
-                text = "${it.title} ${it.message}"
+                text = "${noteItem.title} ${noteItem.message}"
+
+                setOnClickListener { viewModel.noteItemClicked(noteItem) }
             }
             linearLayout.addView(itemView)
+        }
+    }
+
+    private fun handleNavigation(destination: Destination) {
+        when (destination) {
+            is Destination.SecondActivity ->
+                SecondActivity.start(callerActivity = this, noteId = destination.noteId)
+
+            is Destination.Back -> finish()
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.cleanskeleton.di.module.activity.screens
+package com.example.cleanskeleton.presentation.main.di
 
 import android.app.Activity
 import com.example.cleanskeleton.presentation.main.MainActivity

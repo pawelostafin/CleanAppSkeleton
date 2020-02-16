@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class NoteEntity(
     val title: String,
     val message: String,
+    val timestamp: Long,
     @PrimaryKey(autoGenerate = true)
     var id: Long? = null
 )

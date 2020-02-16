@@ -1,18 +1,22 @@
 package com.example.cleanskeleton.presentation.main
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
+import com.example.cleanskeleton.presentation.base.BaseViewModel
+import com.example.cleanskeleton.presentation.main.navigation.Destination
+import com.example.cleanskeleton.presentation.main.navigation.Destination.*
+import com.example.cleanskeleton.util.toLocalDateTime
 import com.example.domain.Note
 import com.example.usecases.AddNoteUseCase
 import com.example.usecases.DeleteAllNotesUseCase
 import com.example.usecases.GetAllNotesUseCase
 import com.jakewharton.rxrelay2.BehaviorRelay
+import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
@@ -20,16 +24,17 @@ class MainViewModel @Inject constructor(
     private val deleteAllNotesUseCase: DeleteAllNotesUseCase,
     private val getAllNotesUseCase: GetAllNotesUseCase,
     private val noteToNoteItemMapper: NoteToNoteItemMapper
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val noteItemsRelay: BehaviorRelay<List<NoteItem>> = BehaviorRelay.create()
     val noteItemsObs: Observable<List<NoteItem>> = noteItemsRelay
 
-    private val disposables = CompositeDisposable()
+    private val navigationRelay: PublishRelay<Destination> = PublishRelay.create()
+    val navigationObs: Observable<Destination> = navigationRelay
 
     private var counter = 0
 
-    fun onInitialized() {
+    override fun onViewInitialized() {
         observeAllNotes()
     }
 
@@ -47,17 +52,25 @@ class MainViewModel @Inject constructor(
     private fun handleGetAllNotesResult(result: GetAllNotesUseCase.Result) {
         when (result) {
             is GetAllNotesUseCase.Result.Success -> {
+                Timber.d("Success GET ALL")
                 val noteItems = noteToNoteItemMapper.map(result.notes)
                 noteItemsRelay.accept(noteItems)
             }
-            is GetAllNotesUseCase.Result.Loading -> Log.d("LOGGER GET ALL", "Loading")
-            is GetAllNotesUseCase.Result.Failure -> Log.e("LOGGER GET ALL", "ERROR")
+            is GetAllNotesUseCase.Result.Loading -> Timber.d("Loading GET ALL")
+            is GetAllNotesUseCase.Result.Failure -> Timber.e(result.throwable)
         }
     }
 
     fun addNoteButtonClicked() {
         addNoteUseCase
-            .execute(Note(title = "title $counter", message = "message ${counter++}"))
+            .execute(
+                Note(
+                    title = "title $counter",
+                    message = "message ${counter++}",
+                    dateTime = System.currentTimeMillis().toLocalDateTime(),
+                    id = null
+                )
+            )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
@@ -69,9 +82,9 @@ class MainViewModel @Inject constructor(
 
     private fun handleAddNoteResult(result: AddNoteUseCase.Result) {
         when (result) {
-            is AddNoteUseCase.Result.Success -> Log.d("LOGGER ADD", "Success")
-            is AddNoteUseCase.Result.Loading -> Log.d("LOGGER ADD", "Loading")
-            is AddNoteUseCase.Result.Failure -> Log.e("LOGGER ADD", "ERROR")
+            is AddNoteUseCase.Result.Success -> Timber.d("Success ADD")
+            is AddNoteUseCase.Result.Loading -> Timber.d("Loading ADD")
+            is AddNoteUseCase.Result.Failure -> Timber.e(result.throwable)
         }
     }
 
@@ -88,11 +101,14 @@ class MainViewModel @Inject constructor(
 
     private fun handleDeleteAllNotesResult(result: DeleteAllNotesUseCase.Result) {
         when (result) {
-            is DeleteAllNotesUseCase.Result.Success -> Log.d("LOGGER DELETE ALL", "Success")
-            is DeleteAllNotesUseCase.Result.Loading -> Log.d("LOGGER DELETE ALL", "Loading")
-            is DeleteAllNotesUseCase.Result.Failure -> Log.e("LOGGER DELETE ALL", "ERROR")
+            is DeleteAllNotesUseCase.Result.Success -> Timber.d("Success DELETE")
+            is DeleteAllNotesUseCase.Result.Loading -> Timber.d("Loading DELETE")
+            is DeleteAllNotesUseCase.Result.Failure -> Timber.e(result.throwable)
         }
     }
 
+    fun noteItemClicked(noteItem: NoteItem) {
+        navigationRelay.accept(SecondActivity(noteItem.id!!))
+    }
 
 }

@@ -7,8 +7,11 @@ class NoteToNoteItemMapper @Inject constructor() {
 
     fun map(note: Note): NoteItem {
         return NoteItem(
+            id = note.id,
             title = note.title,
-            message = note.message
+            message = note.message,
+            formattedDate = note.dateTime.toLocalDate().toString(),
+            formattedTime = note.dateTime.toLocalTime().toString()
         )
     }
 

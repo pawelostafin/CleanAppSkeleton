@@ -58,6 +58,13 @@ dependencies {
     // ktx
     implementation 'androidx.core:core-ktx:1.2.0'
 
+    // ThreeTen Date Time
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+
     implementation project(":data")
     implementation project(":domain")
     implementation project(":usecases")

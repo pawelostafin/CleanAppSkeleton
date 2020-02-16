@@ -1,6 +1,7 @@
 package com.example.cleanskeleton.datasource
 
 import com.example.cleanskeleton.framework.database.entities.NoteEntity
+import com.example.cleanskeleton.util.millis
 import com.example.domain.Note
 import javax.inject.Inject
 
@@ -10,7 +11,9 @@ class NoteToNoteEntityMapper @Inject constructor() {
     fun map(note: Note): NoteEntity {
         return NoteEntity(
             title = note.title,
-            message = note.message
+            message = note.message,
+            timestamp = note.dateTime.millis,
+            id = note.id
         )
     }
 
