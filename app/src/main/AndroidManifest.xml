@@ -22,9 +22,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.second.SecondActivity" />
+        <activity android:name="com.example.secondscreen.SecondActivity" />
 
-        <activity android:name=".presentation.main.MainActivity" />
+        <activity android:name="com.example.mainscreen.MainActivity" />
 
     </application>
 

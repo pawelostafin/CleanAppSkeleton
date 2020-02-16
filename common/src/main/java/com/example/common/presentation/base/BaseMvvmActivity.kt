@@ -36,6 +36,10 @@ abstract class BaseMvvmActivity<T : BaseViewModel> : DaggerAppCompatActivity() {
 
     open fun observeViewModel() {}
 
+    override fun onBackPressed() {
+        viewModel.backButtonClicked()
+    }
+
     override fun onDestroy() {
         disposables.clear()
         super.onDestroy()

@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleObserver
 import com.example.cleanskeleton.BuildConfig
 import com.example.cleanskeleton.di.component.DaggerAppComponent
-import com.example.cleanskeleton.presentation.main.MainActivity
-import com.example.cleanskeleton.presentation.second.SecondActivity
+import com.example.secondscreen.SecondActivity
 import com.example.common.navigator.ScreenNavigator
 import com.example.common.navigator.ScreenNavigatorDelegate
 import com.jakewharton.threetenabp.AndroidThreeTen
@@ -58,8 +57,8 @@ class CleanAppSkeletonApplication : DaggerApplication(), ScreenNavigatorDelegate
     override fun onNavigateTo(screen: ScreenNavigator.Screen) {
         val currentActivity = currentActivity?.get() ?: error("cannot navigate without current activity")
         when (screen) {
-            is ScreenNavigator.Screen.SecondActivity -> SecondActivity.start(currentActivity, screen.noteId)
-            is ScreenNavigator.Screen.MainActivity -> MainActivity.start(currentActivity)
+            is ScreenNavigator.Screen.SecondActivity -> com.example.secondscreen.SecondActivity.start(currentActivity, screen.noteId)
+            is ScreenNavigator.Screen.MainActivity -> com.example.mainscreen.MainActivity.start(currentActivity)
             is ScreenNavigator.Screen.Back -> currentActivity.finish()
         }
     }

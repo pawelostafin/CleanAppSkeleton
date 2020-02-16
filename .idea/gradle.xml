@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/domain" />
+            <option value="$PROJECT_DIR$/mainscreen" />
+            <option value="$PROJECT_DIR$/secondscreen" />
             <option value="$PROJECT_DIR$/usecases" />
           </set>
         </option>
