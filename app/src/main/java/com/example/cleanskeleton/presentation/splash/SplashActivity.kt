@@ -16,7 +16,7 @@ class SplashActivity : DaggerAppCompatActivity() {
     }
 
     private fun navigateToMainActivity() {
-        screenNavigator.navigateTo(ScreenNavigator.Screen.MainActivity)
+        screenNavigator.navigateToMainScreen()
     }
 
 }

@@ -3,8 +3,6 @@ package com.example.cleanskeleton.presentation.main
 import com.example.common.presentation.base.BaseViewModel
 import com.example.cleanskeleton.presentation.main.model.NoteItem
 import com.example.cleanskeleton.presentation.main.model.NoteToNoteItemMapper
-import com.example.cleanskeleton.presentation.main.navigation.Destination
-import com.example.cleanskeleton.presentation.main.navigation.Destination.*
 import com.example.common.extension.toLocalDateTime
 import com.example.common.navigator.ScreenNavigator
 import com.example.domain.Note
@@ -12,7 +10,6 @@ import com.example.usecases.AddNoteUseCase
 import com.example.usecases.DeleteAllNotesUseCase
 import com.example.usecases.GetAllNotesUseCase
 import com.jakewharton.rxrelay2.BehaviorRelay
-import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
@@ -108,8 +105,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun noteItemClicked(noteItem: NoteItem) {
-        val navigatorScreen = ScreenNavigator.Screen.SecondActivity(noteItem.id!!)
-        screenNavigator.navigateTo(navigatorScreen)
+        screenNavigator.navigateToSecondScreen(noteItem.id!!)
     }
 
 }

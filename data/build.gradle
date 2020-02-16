@@ -7,7 +7,6 @@ apply plugin: 'kotlin-kapt'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(":domain")
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
@@ -15,6 +14,8 @@ dependencies {
     // Dagger
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    implementation project(":domain")
 }
 
 sourceCompatibility = "7"
