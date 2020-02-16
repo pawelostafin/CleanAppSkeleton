@@ -1,7 +1,8 @@
 package com.example.cleanskeleton.presentation.main
 
-import android.util.Log
 import com.example.cleanskeleton.presentation.base.BaseViewModel
+import com.example.cleanskeleton.presentation.main.model.NoteItem
+import com.example.cleanskeleton.presentation.main.model.NoteToNoteItemMapper
 import com.example.cleanskeleton.presentation.main.navigation.Destination
 import com.example.cleanskeleton.presentation.main.navigation.Destination.*
 import com.example.cleanskeleton.util.toLocalDateTime
@@ -52,12 +53,12 @@ class MainViewModel @Inject constructor(
     private fun handleGetAllNotesResult(result: GetAllNotesUseCase.Result) {
         when (result) {
             is GetAllNotesUseCase.Result.Success -> {
-                Timber.d("Success GET ALL")
+                Timber.d("LOGGER Success GET ALL")
                 val noteItems = noteToNoteItemMapper.map(result.notes)
                 noteItemsRelay.accept(noteItems)
             }
-            is GetAllNotesUseCase.Result.Loading -> Timber.d("Loading GET ALL")
-            is GetAllNotesUseCase.Result.Failure -> Timber.e(result.throwable)
+            is GetAllNotesUseCase.Result.Loading -> Timber.d("LOGGER Loading GET ALL")
+            is GetAllNotesUseCase.Result.Failure -> Timber.e("LOGGER ${result.throwable}")
         }
     }
 
@@ -82,9 +83,9 @@ class MainViewModel @Inject constructor(
 
     private fun handleAddNoteResult(result: AddNoteUseCase.Result) {
         when (result) {
-            is AddNoteUseCase.Result.Success -> Timber.d("Success ADD")
-            is AddNoteUseCase.Result.Loading -> Timber.d("Loading ADD")
-            is AddNoteUseCase.Result.Failure -> Timber.e(result.throwable)
+            is AddNoteUseCase.Result.Success -> Timber.d("LOGGER Success ADD")
+            is AddNoteUseCase.Result.Loading -> Timber.d("LOGGER Loading ADD")
+            is AddNoteUseCase.Result.Failure -> Timber.e("LOGGER ${result.throwable}")
         }
     }
 
@@ -101,9 +102,9 @@ class MainViewModel @Inject constructor(
 
     private fun handleDeleteAllNotesResult(result: DeleteAllNotesUseCase.Result) {
         when (result) {
-            is DeleteAllNotesUseCase.Result.Success -> Timber.d("Success DELETE")
-            is DeleteAllNotesUseCase.Result.Loading -> Timber.d("Loading DELETE")
-            is DeleteAllNotesUseCase.Result.Failure -> Timber.e(result.throwable)
+            is DeleteAllNotesUseCase.Result.Success -> Timber.d("LOGGER Success DELETE")
+            is DeleteAllNotesUseCase.Result.Loading -> Timber.d("LOGGER Loading DELETE")
+            is DeleteAllNotesUseCase.Result.Failure -> Timber.e("LOGGER ${result.throwable}")
         }
     }
 

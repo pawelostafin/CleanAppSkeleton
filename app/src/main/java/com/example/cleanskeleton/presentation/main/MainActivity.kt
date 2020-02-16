@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.widget.AppCompatTextView
 import com.example.cleanskeleton.R
 import com.example.cleanskeleton.presentation.base.BaseMvvmActivity
+import com.example.cleanskeleton.presentation.main.model.NoteItem
 import com.example.cleanskeleton.presentation.main.navigation.Destination
 import com.example.cleanskeleton.presentation.second.SecondActivity
 import io.reactivex.rxkotlin.addTo
@@ -41,7 +42,7 @@ class MainActivity : BaseMvvmActivity<MainViewModel>() {
         linearLayout.removeAllViews()
         noteItems.forEach { noteItem ->
             val itemView = AppCompatTextView(this).apply {
-                text = "${noteItem.title} ${noteItem.message}"
+                text = "${noteItem.title} ${noteItem.message} ${noteItem.formattedTime}"
 
                 setOnClickListener { viewModel.noteItemClicked(noteItem) }
             }

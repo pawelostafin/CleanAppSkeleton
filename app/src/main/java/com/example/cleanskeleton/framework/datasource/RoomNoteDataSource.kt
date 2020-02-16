@@ -1,9 +1,9 @@
-package com.example.cleanskeleton.datasource
+package com.example.cleanskeleton.framework.datasource
 
 import com.example.cleanskeleton.framework.database.dao.NoteEntityDAO
 import com.example.data.LocalNoteDataSource
 import com.example.domain.Note
-import io.reactivex.Flowable
+import io.reactivex.Observable
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -20,7 +20,11 @@ class RoomNoteDataSource @Inject constructor(
         }
     }
 
-    override fun getAll(): Flowable<List<Note>> {
+    override fun getById(noteId: Long): Observable<Note> {
+        return noteEntityDAO.getById(noteId).map { noteEntityToNoteMapper.map(it) }
+    }
+
+    override fun getAll(): Observable<List<Note>> {
         return noteEntityDAO.getAll().map { noteEntityToNoteMapper.map(it) }
     }
 

@@ -4,6 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import com.example.cleanskeleton.R
 import com.example.cleanskeleton.presentation.base.BaseMvvmActivity
+import com.example.cleanskeleton.presentation.second.model.NoteDetails
+import com.example.domain.Note
+import io.reactivex.rxkotlin.addTo
+import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : BaseMvvmActivity<SecondViewModel>() {
 
@@ -13,8 +17,16 @@ class SecondActivity : BaseMvvmActivity<SecondViewModel>() {
     override val viewModelClass: Class<SecondViewModel>
         get() = SecondViewModel::class.java
 
-    override fun setupView() {
-        super.setupView()
+    override fun observeViewModel() {
+        super.observeViewModel()
+
+        viewModel.noteObs
+            .subscribe(::fillNoteDetails)
+            .addTo(disposables)
+    }
+
+    private fun fillNoteDetails(noteDetails: NoteDetails) {
+        noteDetailsTextView.text = noteDetails.toString()
     }
 
     companion object {

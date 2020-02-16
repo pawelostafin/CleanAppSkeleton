@@ -1,4 +1,4 @@
-package com.example.cleanskeleton.presentation.main
+package com.example.cleanskeleton.presentation.main.model
 
 data class NoteItem(
     val id: Long?,

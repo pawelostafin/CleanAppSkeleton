@@ -1,4 +1,4 @@
-package com.example.cleanskeleton.presentation.main
+package com.example.cleanskeleton.presentation.main.model
 
 import com.example.domain.Note
 import javax.inject.Inject

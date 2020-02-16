@@ -12,11 +12,11 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBindingModule {
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [MainActivityModule::class, ActivityModule::class, ActivityViewModelModule::class])
+    @ContributesAndroidInjector(modules = [MainActivityModule::class, ActivityModule::class])
     abstract fun mainActivity(): MainActivity
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [SecondActivityModule::class, ActivityModule::class, ActivityViewModelModule::class])
+    @ContributesAndroidInjector(modules = [SecondActivityModule::class, ActivityModule::class])
     abstract fun secondActivity(): SecondActivity
 
 }

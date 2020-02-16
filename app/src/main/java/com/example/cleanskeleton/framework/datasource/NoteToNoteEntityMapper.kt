@@ -1,4 +1,4 @@
-package com.example.cleanskeleton.datasource
+package com.example.cleanskeleton.framework.datasource
 
 import com.example.cleanskeleton.framework.database.entities.NoteEntity
 import com.example.cleanskeleton.util.millis

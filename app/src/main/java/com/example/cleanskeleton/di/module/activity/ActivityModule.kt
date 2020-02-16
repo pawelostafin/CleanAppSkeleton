@@ -16,6 +16,6 @@ class ActivityModule {
         @ActivityBundle
         @Provides
         fun bundle(activity: Activity): Bundle = activity.intent.extras ?: Bundle.EMPTY
-    }
 
+    }
 }
