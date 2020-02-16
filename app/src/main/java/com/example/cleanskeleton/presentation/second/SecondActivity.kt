@@ -3,11 +3,11 @@ package com.example.cleanskeleton.presentation.second
 import android.app.Activity
 import android.content.Intent
 import com.example.cleanskeleton.R
-import com.example.cleanskeleton.presentation.base.BaseMvvmActivity
+import com.example.common.presentation.base.BaseMvvmActivity
 import com.example.cleanskeleton.presentation.second.model.NoteDetails
-import com.example.domain.Note
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_second.*
+import timber.log.Timber
 
 class SecondActivity : BaseMvvmActivity<SecondViewModel>() {
 

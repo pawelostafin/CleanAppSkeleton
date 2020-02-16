@@ -1,12 +1,10 @@
 package com.example.cleanskeleton.presentation.second
 
-import com.example.cleanskeleton.presentation.base.BaseViewModel
+import com.example.common.presentation.base.BaseViewModel
 import com.example.cleanskeleton.presentation.second.model.NoteDetails
 import com.example.cleanskeleton.presentation.second.model.NoteToNoteDetailsMapper
-import com.example.domain.Note
 import com.example.usecases.GetNoteByIdUseCase
 import com.jakewharton.rxrelay2.BehaviorRelay
-import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo

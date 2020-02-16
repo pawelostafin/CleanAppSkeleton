@@ -1,7 +1,7 @@
 package com.example.cleanskeleton.framework.datasource
 
 import com.example.cleanskeleton.framework.database.entities.NoteEntity
-import com.example.cleanskeleton.util.toLocalDateTime
+import com.example.common.extension.toLocalDateTime
 import com.example.domain.Note
 import javax.inject.Inject
 

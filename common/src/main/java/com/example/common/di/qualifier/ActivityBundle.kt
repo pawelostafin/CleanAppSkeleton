@@ -1,4 +1,4 @@
-package com.example.cleanskeleton.di.qualifiers
+package com.example.common.di.qualifier
 
 import javax.inject.Qualifier
 

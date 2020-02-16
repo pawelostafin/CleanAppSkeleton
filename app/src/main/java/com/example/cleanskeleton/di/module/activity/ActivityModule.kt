@@ -2,7 +2,7 @@ package com.example.cleanskeleton.di.module.activity
 
 import android.app.Activity
 import android.os.Bundle
-import com.example.cleanskeleton.di.qualifiers.ActivityBundle
+import com.example.common.di.qualifier.ActivityBundle
 import dagger.Module
 import dagger.Provides
 

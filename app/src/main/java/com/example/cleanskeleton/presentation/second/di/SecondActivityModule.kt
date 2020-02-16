@@ -3,8 +3,8 @@ package com.example.cleanskeleton.presentation.second.di
 import android.app.Activity
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
-import com.example.cleanskeleton.di.ViewModelKey
-import com.example.cleanskeleton.di.qualifiers.ActivityBundle
+import com.example.common.di.annotations.ViewModelKey
+import com.example.common.di.qualifier.ActivityBundle
 import com.example.cleanskeleton.presentation.second.SecondActivity
 import com.example.cleanskeleton.presentation.second.SecondViewModel
 import dagger.Binds

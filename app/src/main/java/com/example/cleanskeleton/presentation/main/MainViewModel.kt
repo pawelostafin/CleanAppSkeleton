@@ -1,11 +1,12 @@
 package com.example.cleanskeleton.presentation.main
 
-import com.example.cleanskeleton.presentation.base.BaseViewModel
+import com.example.common.presentation.base.BaseViewModel
 import com.example.cleanskeleton.presentation.main.model.NoteItem
 import com.example.cleanskeleton.presentation.main.model.NoteToNoteItemMapper
 import com.example.cleanskeleton.presentation.main.navigation.Destination
 import com.example.cleanskeleton.presentation.main.navigation.Destination.*
-import com.example.cleanskeleton.util.toLocalDateTime
+import com.example.common.extension.toLocalDateTime
+import com.example.common.navigator.ScreenNavigator
 import com.example.domain.Note
 import com.example.usecases.AddNoteUseCase
 import com.example.usecases.DeleteAllNotesUseCase
@@ -22,6 +23,7 @@ import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
     private val addNoteUseCase: AddNoteUseCase,
+    private val screenNavigator: ScreenNavigator,
     private val deleteAllNotesUseCase: DeleteAllNotesUseCase,
     private val getAllNotesUseCase: GetAllNotesUseCase,
     private val noteToNoteItemMapper: NoteToNoteItemMapper
@@ -29,9 +31,6 @@ class MainViewModel @Inject constructor(
 
     private val noteItemsRelay: BehaviorRelay<List<NoteItem>> = BehaviorRelay.create()
     val noteItemsObs: Observable<List<NoteItem>> = noteItemsRelay
-
-    private val navigationRelay: PublishRelay<Destination> = PublishRelay.create()
-    val navigationObs: Observable<Destination> = navigationRelay
 
     private var counter = 0
 
@@ -109,7 +108,8 @@ class MainViewModel @Inject constructor(
     }
 
     fun noteItemClicked(noteItem: NoteItem) {
-        navigationRelay.accept(SecondActivity(noteItem.id!!))
+        val navigatorScreen = ScreenNavigator.Screen.SecondActivity(noteItem.id!!)
+        screenNavigator.navigateTo(navigatorScreen)
     }
 
 }

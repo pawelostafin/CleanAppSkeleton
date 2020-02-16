@@ -1,4 +1,4 @@
-package com.example.cleanskeleton.di;
+package com.example.common.di.annotations;
 
 import androidx.lifecycle.ViewModel;
 

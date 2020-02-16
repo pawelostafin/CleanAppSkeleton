@@ -1,4 +1,4 @@
-package com.example.cleanskeleton.presentation.base
+package com.example.common.presentation.base
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider

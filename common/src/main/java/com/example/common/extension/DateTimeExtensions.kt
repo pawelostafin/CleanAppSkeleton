@@ -1,4 +1,4 @@
-package com.example.cleanskeleton.util
+package com.example.common.extension
 
 import org.threeten.bp.Instant
 import org.threeten.bp.LocalDateTime

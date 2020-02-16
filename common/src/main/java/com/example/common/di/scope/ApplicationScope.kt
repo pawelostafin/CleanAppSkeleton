@@ -1,4 +1,4 @@
-package com.example.cleanskeleton.di.scope
+package com.example.common.di.scope
 
 import javax.inject.Scope
 

@@ -1,12 +1,12 @@
 package com.example.cleanskeleton.presentation.main
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.widget.AppCompatTextView
 import com.example.cleanskeleton.R
-import com.example.cleanskeleton.presentation.base.BaseMvvmActivity
+import com.example.common.presentation.base.BaseMvvmActivity
 import com.example.cleanskeleton.presentation.main.model.NoteItem
-import com.example.cleanskeleton.presentation.main.navigation.Destination
-import com.example.cleanskeleton.presentation.second.SecondActivity
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -31,10 +31,6 @@ class MainActivity : BaseMvvmActivity<MainViewModel>() {
         viewModel.noteItemsObs
             .subscribe(::fillLinearLayout)
             .addTo(disposables)
-
-        viewModel.navigationObs
-            .subscribe(::handleNavigation)
-            .addTo(disposables)
     }
 
     @SuppressLint("SetTextI18n")
@@ -50,12 +46,10 @@ class MainActivity : BaseMvvmActivity<MainViewModel>() {
         }
     }
 
-    private fun handleNavigation(destination: Destination) {
-        when (destination) {
-            is Destination.SecondActivity ->
-                SecondActivity.start(callerActivity = this, noteId = destination.noteId)
-
-            is Destination.Back -> finish()
+    companion object {
+        fun start(callerActivity: Activity) {
+            val intent = Intent(callerActivity, MainActivity::class.java)
+            callerActivity.startActivity(intent)
         }
     }
 
