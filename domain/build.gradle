@@ -3,22 +3,22 @@ apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    implementation Libs.kotlin_stdlib_jdk8
 
     // ThreeTen Date Time
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
-
+    implementation Libs.threetenabp
 }
 
-sourceCompatibility = "7"
-targetCompatibility = "7"
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
 buildscript {
-    ext.kotlin_version = '1.3.61'
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.61"
     }
 }
 repositories {
