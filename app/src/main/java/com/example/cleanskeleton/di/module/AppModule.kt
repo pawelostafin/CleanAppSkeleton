@@ -2,8 +2,8 @@ package com.example.cleanskeleton.di.module
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
-import com.example.cleanskeleton.framework.CleanAppSkeletonApplication
-import com.example.cleanskeleton.framework.CleanAppSkeletonViewModelFactory
+import com.example.cleanskeleton.CleanAppSkeletonApplication
+import com.example.cleanskeleton.CleanAppSkeletonViewModelFactory
 import dagger.Binds
 import dagger.Module
 

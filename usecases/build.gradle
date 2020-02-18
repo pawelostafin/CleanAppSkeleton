@@ -1,7 +1,5 @@
 apply plugin: 'java-library'
-
 apply plugin: 'kotlin'
-
 apply plugin: 'kotlin-kapt'
 
 dependencies {
@@ -14,8 +12,8 @@ dependencies {
     implementation Libs.dagger
     kapt Libs.dagger_compiler
 
-    implementation project(Modules.domain)
     implementation project(Modules.data)
+    api project(Modules.domain)
 }
 
 sourceCompatibility = "8"

@@ -1,2 +1,2 @@
-include ':app', ':data', ':domain', ':usecases', ':common', ':mainscreen', ':secondscreen'
+include ':app', ':data', ':domain', ':usecases', ':common', ':mainscreen', ':secondscreen', ':persistance'
 rootProject.name='CleanAppSkeleton'

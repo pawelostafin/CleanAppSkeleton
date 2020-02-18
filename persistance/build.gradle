@@ -40,19 +40,9 @@ dependencies {
     implementation Libs.room_rxjava2
     kapt Libs.room_compiler
 
-    // RxJava
-    implementation Libs.rxandroid
-    implementation Libs.rxjava
-    implementation Libs.rxkotlin
-    implementation Libs.rxbinding
-    implementation Libs.rxrelay
-
     // ThreeTen Date Time
     implementation Libs.threetenabp
 
-    // Timber
-    implementation Libs.timber
-
     implementation project(Modules.common)
-    api project(Modules.usecases)
+    api project(Modules.data)
 }

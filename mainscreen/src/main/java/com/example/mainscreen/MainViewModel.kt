@@ -2,7 +2,6 @@ package com.example.mainscreen
 
 import com.example.common.presentation.base.BaseViewModel
 import com.example.common.extension.toLocalDateTime
-import com.example.common.navigator.ScreenNavigator
 import com.example.domain.Note
 import com.example.mainscreen.model.NoteItem
 import com.example.mainscreen.model.NoteToNoteItemMapper

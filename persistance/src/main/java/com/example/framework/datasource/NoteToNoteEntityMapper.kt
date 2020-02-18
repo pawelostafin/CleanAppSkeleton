@@ -1,6 +1,6 @@
-package com.example.cleanskeleton.framework.datasource
+package com.example.framework.datasource
 
-import com.example.cleanskeleton.framework.database.entities.NoteEntity
+import com.example.framework.database.entities.NoteEntity
 import com.example.common.extension.millis
 import com.example.domain.Note
 import javax.inject.Inject

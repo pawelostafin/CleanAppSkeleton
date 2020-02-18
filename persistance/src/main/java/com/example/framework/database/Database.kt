@@ -1,9 +1,9 @@
-package com.example.cleanskeleton.framework.database
+package com.example.framework.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.cleanskeleton.framework.database.dao.NoteEntityDAO
-import com.example.cleanskeleton.framework.database.entities.NoteEntity
+import com.example.framework.database.dao.NoteEntityDAO
+import com.example.framework.database.entities.NoteEntity
 
 
 @Database(

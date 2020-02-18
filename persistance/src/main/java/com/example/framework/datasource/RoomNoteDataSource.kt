@@ -1,6 +1,6 @@
-package com.example.cleanskeleton.framework.datasource
+package com.example.framework.datasource
 
-import com.example.cleanskeleton.framework.database.dao.NoteEntityDAO
+import com.example.framework.database.dao.NoteEntityDAO
 import com.example.data.LocalNoteDataSource
 import com.example.domain.Note
 import io.reactivex.Observable

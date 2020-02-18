@@ -6,4 +6,5 @@ object Modules {
     const val mainscreen = ":mainscreen"
     const val secondscreen = ":secondscreen"
     const val usecases = ":usecases"
+    const val persistance = ":persistance"
 }

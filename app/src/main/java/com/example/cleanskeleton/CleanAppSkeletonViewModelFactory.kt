@@ -1,4 +1,4 @@
-package com.example.cleanskeleton.framework
+package com.example.cleanskeleton
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

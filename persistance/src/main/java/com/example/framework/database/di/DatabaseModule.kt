@@ -1,11 +1,11 @@
-package com.example.cleanskeleton.di.module
+package com.example.framework.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.cleanskeleton.framework.datasource.RoomNoteDataSource
+import com.example.framework.datasource.RoomNoteDataSource
 import com.example.common.di.scope.ApplicationScope
-import com.example.cleanskeleton.framework.database.AppDatabase
-import com.example.cleanskeleton.framework.database.dao.NoteEntityDAO
+import com.example.framework.database.AppDatabase
+import com.example.framework.database.dao.NoteEntityDAO
 import com.example.data.LocalNoteDataSource
 import dagger.Binds
 import dagger.Module

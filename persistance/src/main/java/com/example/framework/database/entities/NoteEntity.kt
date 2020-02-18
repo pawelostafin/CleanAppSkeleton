@@ -1,4 +1,4 @@
-package com.example.cleanskeleton.framework.database.entities
+package com.example.framework.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

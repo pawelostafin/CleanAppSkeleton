@@ -1,0 +1,49 @@
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            android {
+                compileSdkVersion AndroidConfig.compile_sdk_version
+
+                defaultConfig {
+                    minSdkVersion AndroidConfig.min_sdk_version
+                    targetSdkVersion AndroidConfig.target_sdk_version
+                    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+                }
+
+                compileOptions {
+                    targetCompatibility JavaVersion.VERSION_1_8
+                    sourceCompatibility JavaVersion.VERSION_1_8
+                }
+
+                kotlinOptions {
+                    jvmTarget = JavaVersion.VERSION_1_8
+                }
+            }
+        } else {
+            sourceCompatibility = "8"
+            targetCompatibility = "8"
+
+            buildscript {
+                repositories {
+                    mavenCentral()
+                }
+                dependencies {
+                    classpath Libs.kotlin_gradle_plugin
+                }
+            }
+            repositories {
+                mavenCentral()
+            }
+            compileKotlin {
+                kotlinOptions {
+                    jvmTarget = "1.8"
+                }
+            }
+            compileTestKotlin {
+                kotlinOptions {
+                    jvmTarget = "1.8"
+                }
+            }
+        }
+    }
+}

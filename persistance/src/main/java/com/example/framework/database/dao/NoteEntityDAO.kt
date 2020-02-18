@@ -1,9 +1,9 @@
-package com.example.cleanskeleton.framework.database.dao
+package com.example.framework.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.cleanskeleton.framework.database.entities.NoteEntity
+import com.example.framework.database.entities.NoteEntity
 import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.Single

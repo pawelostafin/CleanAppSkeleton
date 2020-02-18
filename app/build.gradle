@@ -1,21 +1,11 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.cleanskeleton"
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -23,56 +13,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Libs.kotlin_stdlib_jdk8
-    implementation Libs.appcompat
-    implementation Libs.core_ktx
-    implementation Libs.constraintlayout
-    testImplementation Libs.junit_junit
-    androidTestImplementation Libs.androidx_test_ext_junit
-    androidTestImplementation Libs.espresso_core
-
-    // Dagger
-    implementation Libs.dagger
-    kapt Libs.dagger_compiler
-    implementation Libs.dagger_android
-    implementation Libs.dagger_android_support
-    // if you use the support libraries
-    kapt Libs.dagger_android_processor
-
-    // Room
-    implementation Libs.room_runtime
-    kapt Libs.room_compiler
-    implementation Libs.room_rxjava2
-
-    // RxJava
-    implementation Libs.rxandroid
-    implementation Libs.rxjava
-    implementation Libs.rxkotlin
-    implementation Libs.rxbinding
-    implementation Libs.rxrelay
-
-    // ktx
-    implementation Libs.core_ktx
-
-    // ThreeTen Date Time
-    implementation Libs.threetenabp
-
-    // Timber
-    implementation Libs.timber
-
-    implementation project(Modules.data)
-    implementation project(Modules.domain)
-    implementation project(Modules.usecases)
-    implementation project(Modules.common)
-    implementation project(Modules.mainscreen)
-    implementation project(Modules.secondscreen)
-}
+apply from: 'dependencies.gradle'
